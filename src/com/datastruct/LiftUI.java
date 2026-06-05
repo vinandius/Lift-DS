@@ -120,27 +120,28 @@ public class LiftUI extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e){
                 new Thread(() -> {
-                    for (int i = 0; i < lifts.length; i++) {
-                        //Membuat variable untuk merujuk (mewakili) sebuah lift
-                        Lift lift = lifts[i];
+                    for (int i = 0; i < queue.size(); i++) {
+                        //Membuat variable untuk menampung data yang tertampung dalam LiftCall
+                        LiftCall pointedLift = queue.get(i);
+
+                        //Membuat variable untuk mengambil data lift yang dipilih
+                        Lift chosenLift =  pointedLift.getPointedLift();
 
                         //MyArrayList digunakan untuk menyimpan daftar urutan dari sebuah lift yang telah diwakili variable lift
-                        MyArrayList<Integer> order = lift.getDestInOrder();
+                        MyArrayList<Integer> order;
 
                         //Membuat logical condition dimana jika request lantai adalah turun, gunakan reverse in order. Kalau naik, gunakan in order
-                        if(lift.getRequestDirection() == Direction.DOWN){
-                            order = lift.getDestReverseInOrder();
+                        if(chosenLift.getRequestDirection() == Direction.DOWN){
+                            order = chosenLift.getDestReverseInOrder();
                         } else {
-                            order = lift.getDestInOrder();
+                            order = chosenLift.getDestInOrder();
                         }
                         
                         //Melakukan start untuk mengeksekusi / menggerakkan lift ke tujuan
                         for (int j = 0; j < order.size(); j++) {
                             int floor = order.get(j);
 
-                            LiftUI.this.dispatch.moveLift(lift, floor, LiftUI.this);
-
-                            prosesLift();
+                            LiftUI.this.dispatch.moveLift(chosenLift, floor, LiftUI.this);
                         }
                     }
 
