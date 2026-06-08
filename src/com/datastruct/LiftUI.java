@@ -64,7 +64,7 @@ public class LiftUI extends JFrame {
                             //Menambahkan variable chosenLift ke antrian
                             queue.add(new RecordCall(destFloor, Direction.UP, chosenLift));
                             //Dilakukan pemanggilan fungsi prosesLift() untuk memperbarui isi dari panel BST (urutan lantai untuk lift)
-                            prosesLift();
+                            updateBST();
                         }).start();
                     }
                 });
@@ -84,7 +84,7 @@ public class LiftUI extends JFrame {
                         new Thread(() -> {
                             Lift chosenLift = LiftUI.this.dispatch.liftCall(destFloor, Direction.DOWN);
                             queue.add(new RecordCall(destFloor, Direction.DOWN, chosenLift));
-                            prosesLift();
+                            updateBST();
                         }).start();
                     }
                 });
