@@ -1,12 +1,12 @@
 package com.datastruct;
 
 //Class untuk menyimpan informasi terkait lift yang telah dipilih
-public class LiftCall {
+public class RecordCall {
     private int floor;
     private Direction direction;
     private Lift pointedLift;
 
-    public LiftCall(int floor, Direction direction, Lift pointedLift) {
+    public RecordCall(int floor, Direction direction, Lift pointedLift) {
         this.floor = floor;
         this.direction = direction;
         this.pointedLift = pointedLift;

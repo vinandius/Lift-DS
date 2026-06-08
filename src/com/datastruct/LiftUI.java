@@ -19,7 +19,7 @@ public class LiftUI extends JFrame {
     private JTextArea[] bstText;
 
     //Queue berfungsi untuk menyimpan request (panggilan) lift untuk ditampilkan di panel BST (urutan untuk lift)
-    private MyArrayList<LiftCall> queue = new MyArrayList<>(100);
+    private MyArrayList<RecordCall> queue = new MyArrayList<>(100);
 
     public LiftUI(Lift[] lifts, LiftDispatch dispatch) {
         this.lifts = lifts;
@@ -61,9 +61,9 @@ public class LiftUI extends JFrame {
                     public void actionPerformed(ActionEvent e) {
                         new Thread(() -> {
                             //Variable chosenLift untuk menyimpan data panggilan dari suatu lantai
-                            Lift chosenLift = LiftUI.this.dispatch.recordCall(destFloor, Direction.UP);
+                            Lift chosenLift = LiftUI.this.dispatch.liftCall(destFloor, Direction.UP);
                             //Menambahkan variable chosenLift ke antrian
-                            queue.add(new LiftCall(destFloor, Direction.UP, chosenLift));
+                            queue.add(new RecordCall(destFloor, Direction.UP, chosenLift));
                             //Dilakukan pemanggilan fungsi prosesLift() untuk memperbarui isi dari panel BST (urutan lantai untuk lift)
                             prosesLift();
                         }).start();
@@ -83,8 +83,8 @@ public class LiftUI extends JFrame {
                     @Override
                     public void actionPerformed(ActionEvent e) {
                         new Thread(() -> {
-                            Lift chosenLift = LiftUI.this.dispatch.recordCall(destFloor, Direction.DOWN);
-                            queue.add(new LiftCall(destFloor, Direction.DOWN, chosenLift));
+                            Lift chosenLift = LiftUI.this.dispatch.liftCall(destFloor, Direction.DOWN);
+                            queue.add(new RecordCall(destFloor, Direction.DOWN, chosenLift));
                             prosesLift();
                         }).start();
                     }

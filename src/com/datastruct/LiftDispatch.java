@@ -32,7 +32,7 @@ public class LiftDispatch {
     }
 
     //Fungi untuk menentukan lift
-    public Lift recordCall(int floor, Direction direction) {
+    public Lift liftCall(int floor, Direction direction) {
         //Membuat objek heap
         Heap<Integer, Lift> heap = new Heap<>(20, true);
 
