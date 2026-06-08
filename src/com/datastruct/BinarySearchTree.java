@@ -19,10 +19,6 @@ public class BinarySearchTree<K extends Comparable<? super K>,V>
         root = deleteNode(root, key);
     }
 
-    public void inOrder() {
-        printInOrder(root);
-    }
-
     public String inOrderString() {
         return inOrderPanel(root);
     }

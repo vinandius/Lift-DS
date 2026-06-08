@@ -16,10 +16,6 @@ public class Heap<K extends Comparable<? super K>,V> {
         this.priority = priority;
     }
 
-    //mengembalikan jumlah elemen di heap
-    public int size() {
-        return arrList.size();
-    }
     //mengembalikan bagian value (data/informasi) 
     //dari node berdasarkan index
     public V getData(int index) {
@@ -63,26 +59,6 @@ public class Heap<K extends Comparable<? super K>,V> {
         for (int i = size / 2 - 1; i >= 0; i--) {
             if(priority) heapifyMin(size, i);
             else heapifyMax(size, i);
-        }
-    }
-    //heapsort
-    public void sort() {
-        int size = arrList.size();
-
-        // build heapSort (rearrange array)
-        buildHeap();
-
-        // one by one extract an element from heapSort
-        for (int i = size - 1; i >= 0; i--)
-        {
-            // swap current root node to rightmost leaf node
-            BTNode<K,V> temp = arrList.get(0);
-            arrList.set(0, arrList.get(i));
-            arrList.set (i, temp);
-
-            // call max or min heapify on the reduced heap
-            if(priority) heapifyMin(i, 0);
-            else heapifyMax(i, 0);
         }
     }
     // to max heapify a subtree rooted at node i
@@ -158,11 +134,5 @@ public class Heap<K extends Comparable<? super K>,V> {
         arrList.remove(n);
 
         return temp;
-    }
-
-    /* A utility function to print array of size n */
-    public void display()
-    {
-        arrList.cetakList();
     }
 }

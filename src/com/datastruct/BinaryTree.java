@@ -11,7 +11,6 @@ package com.datastruct;
     private V data;   // object data dari sebuah class
     private BTNode<K,V> llink; //left link
     private BTNode<K,V> rlink; //right link
-    private Direction direction;
 
     //constructor
     public BTNode(K k, V data) {
@@ -45,26 +44,9 @@ package com.datastruct;
     public BTNode<K, V> getRlink() {
         return rlink;
     }
-    public Direction getDirection() {
-        return direction;
-    }
 }
 
 public class BinaryTree<K, V>{
-
-    //rekursif in order traversal
-    public void printInOrder(BTNode<K,V> node) {
-        //T sebelumnya adalah child node
-        if(node == null) return;
-        else {
-            //ke left node secara rekursif
-            printInOrder(node.getLlink());
-            //cetak key dari node
-            System.out.print(node.getKey() + ":" + node.getData() + " ");
-            //ke right node secara rekursif
-            printInOrder(node.getRlink());
-        }
-    }
 
     public String inOrderPanel(BTNode<K,V> node) {
         if(node == null) return "";
