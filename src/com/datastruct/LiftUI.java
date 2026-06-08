@@ -2,8 +2,7 @@ package com.datastruct;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+import java.awt.event.*;
 
 public class LiftUI extends JFrame {
     //membuat objek dari class lift
@@ -121,7 +120,7 @@ public class LiftUI extends JFrame {
             public void actionPerformed(ActionEvent e){
                 new Thread(() -> {
                     for (int i = 0; i < queue.size(); i++) {
-                        //Membuat variable untuk menampung data yang tertampung dalam LiftCall
+                        //Membuat variable untuk menampung data yang tertampung dalam RecordCall
                         RecordCall pointedLift = queue.get(i);
 
                         //Membuat variable untuk mengambil data lift yang dipilih

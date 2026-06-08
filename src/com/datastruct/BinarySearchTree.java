@@ -19,24 +19,6 @@ public class BinarySearchTree<K extends Comparable<? super K>,V>
         root = deleteNode(root, key);
     }
 
-    public V search(K key) {
-        V info = null;
-        info = getData(find(root,key));
-        return info;
-    }
-
-    public K max() {
-        K kunci = null;
-        kunci = getKey(findMax(root));
-        return kunci;
-    }
-    
-    public K min() {
-        K kunci = null;
-        kunci = getKey(findMin(root));
-        return kunci;
-    }
-
     public void inOrder() {
         printInOrder(root);
     }
@@ -133,27 +115,6 @@ public class BinarySearchTree<K extends Comparable<? super K>,V>
             node.setData(child.getData());
 
             return node;
-        }
-    }
-
-    private BTNode<K,V> find(BTNode<K,V> node, K k) {
-        //node adalah subtree (root dari subtree)
-        if(node == null || node.getKey() == k) return node;
-        else if(node.getKey().compareTo(k) < 0) return find(node.getRlink(), k);
-        else return find(node.getLlink(), k);
-    }
-
-    private BTNode<K,V> findMin(BTNode<K,V> node) {
-        if(node == null || node.getLlink() == null) return node;
-        else {
-            return findMin(node.getLlink());
-        }
-    }
-
-    private BTNode<K,V> findMax(BTNode<K,V> node) {
-        if(node == null || node.getRlink() == null) return node;
-        else {
-            return findMax(node.getRlink());
         }
     }
 
