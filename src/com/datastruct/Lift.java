@@ -73,6 +73,7 @@ public class Lift {
     }
 
     public void depart(int destFloor, LiftUI ui){
+        System.out.println("Lift " + name + " sedang menuju ke lantai " + destFloor);
         //Cek kondisi untuk pergerakkan lift
         if(currentFloor < destFloor) {
             //Mengatur arah lift jika posisi lift <  lantai tujuan atau > lantai tujuan 
@@ -94,7 +95,7 @@ public class Lift {
         } else {
             this.movingDirection = Direction.IDLE;
         }
-        System.out.println("Lift " + name + " sedang menuju lantai " + destFloor);
+        System.out.println("Lift " + name + " telah sampai di lantai " + destFloor);
 
         //Ketika kondisi currentFloor == floor, maka while loop akan berhenti dulu lalu dilanjut dengan arrivedPause() untuk jeda
         arrivedPause();

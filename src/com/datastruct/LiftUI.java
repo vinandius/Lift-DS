@@ -149,7 +149,6 @@ public class LiftUI extends JFrame {
 
                     //Mengupdate kondisi lift setelah mencapai tujuan
                     for (int i = 0; i < lifts.length; i++) {
-                        lifts[i].setLatestFloor(lifts[i].getCurrentFloor());
                         lifts[i].setRequestDirection(Direction.IDLE);
                     }
 
